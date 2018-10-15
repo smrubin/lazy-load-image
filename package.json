@@ -1,0 +1,30 @@
+{
+ "name": "lazy-load-image",
+ "version": "0.1.0",
+ "description": "A module to lazy load images using the Intersection Observer API",
+ "main": "index.js",
+ "license": "MIT",
+ "repository": "smrubin/lazy-load-image",
+ "author": {
+  "name": "Sam Rubin"
+ },
+ "scripts": {
+  "test": "jest"
+ },
+ "keywords": [
+  "lazyload",
+  "lazy-load",
+  "lazy",
+  "load",
+  "image",
+  "img",
+  "IntersectionObserver",
+  "intersection-observer"
+ ],
+ "dependencies": {},
+ "devDependencies": {
+  "babel-jest": "^23.6.0",
+  "babel-preset-env": "^1.7.0",
+  "jest": "^23.6.0"
+ }
+}
