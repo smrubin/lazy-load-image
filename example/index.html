@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Lazy Load Image Example</title>
+
+	<style>
+		body {
+			height: 400vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		#targetElement {
+			width: 200px;
+			height: 200px;
+		}
+
+	</style>
+
+</head>
+<body>
+
+<img id="targetElement" src="" data-lazyload="http://placekitten.com/200/200" />
+
+<script src="example.js" type="module"></script>
+
+</body>
+</html>
