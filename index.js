@@ -27,7 +27,7 @@ export default class LazyLoader {
 
 		targetElements = Array.from(targetElements);
 
-		if(!targetElements.filter(this.isElementLazyLoadable).length) {
+		if(!targetElements.filter(LazyLoader.isElementLazyLoadable).length) {
 			return; // No lazy loadable elements
 		}
 
@@ -39,8 +39,8 @@ export default class LazyLoader {
 		});
 	}
 
-	isElementLazyLoadable(el) {
-		return el.nodeName.toLowerCase() === 'img' && el.attributes['data-lazyload'];
+	static isElementLazyLoadable(el) {
+		return !!(el.nodeName.toLowerCase() === 'img' && el.attributes['data-lazyload']);
 	}
 
 	// When a lazy load-able element intersects the IO's threshold and margin, load the image.
@@ -52,8 +52,8 @@ export default class LazyLoader {
 			 * When the IntersectionObserver is instantiated the callback is ran once
 			 * as a detection for whether the element is in view or not.
 			 */
-			if (!entry.isIntersecting) { // todo - check on this
-				return;
+			if (!entry.isIntersecting) { // TODO: Ensure this is the right check to be performed.
+				return; // Do we want to return here?
 			}
 
 			// Load the actual image by making setting src attribute equal to custom data-lazyload attribute.
