@@ -19,29 +19,31 @@ export default class LazyLoader {
 	}
 
 	observeTargets() {
-		const targetElements = this.getTargetElements();
+		let targetElements = this.getTargetElements();
 
 		if (!targetElements || !targetElements.length) {
-			// Error or no matching elements found
 			return;
 		}
 
-		// Create new IO with lazy load handler
+		targetElements = Array.from(targetElements);
+
+		if(!targetElements.filter(this.isElementLazyLoadable).length) {
+			return; // No lazy loadable elements
+		}
+
+		// Create new IO with lazy load callback
 		const observer = new IntersectionObserver(this.handleIntersection, this.getIntersectionObserverOptions());
 
-		// observe each one
-		Array.from(targetElements)
-			.filter(this.isElementLazyLoadable)
-			.forEach(el => {
-				observer.observe(el)
-			});
+		targetElements.forEach(el => {
+			observer.observe(el);
+		});
 	}
 
 	isElementLazyLoadable(el) {
 		return el.nodeName.toLowerCase() === 'img' && el.attributes['data-lazyload'];
 	}
 
-	// this will be the handler that actually does the lazy loading
+	// When a lazy load-able element intersects the IO's threshold and margin, load the image.
 	handleIntersection(entries, observer) {
 
 		entries.forEach(entry => {
@@ -54,8 +56,10 @@ export default class LazyLoader {
 				return;
 			}
 
-			//load the actual image by making the src the data attribute
+			// Load the actual image by making setting src attribute equal to custom data-lazyload attribute.
 			entry.target.src = entry.target.attributes['data-lazyload'].value;
+
+			// Stop observing target, since it now has its image loaded.
 			observer.unobserve(entry.target);
 
 		});
