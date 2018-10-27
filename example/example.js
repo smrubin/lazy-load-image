@@ -1,10 +1,10 @@
 import LazyLoad from '../index.js';
 
-(async () => {
+(() => {
 
 	try {
 		new LazyLoad('#targetElement');
-	} catch(err) {
+	} catch (err) {
 		console.log(err);
 	}
 
