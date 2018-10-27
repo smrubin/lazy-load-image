@@ -52,8 +52,8 @@ export default class LazyLoader {
 			 * When the IntersectionObserver is instantiated the callback is ran once
 			 * as a detection for whether the element is in view or not.
 			 */
-			if (!entry.isIntersecting) { // TODO: Ensure this is the right check to be performed.
-				return; // Do we want to return here?
+			if (!entry.isIntersecting) {
+				return;
 			}
 
 			// Load the actual image by making setting src attribute equal to custom data-lazyload attribute.
