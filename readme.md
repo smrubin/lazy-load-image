@@ -7,9 +7,13 @@ A module to lazy load images using the Intersection Observer API. Targets images
 
 #### Example
 
+Install:
+
 ```
 npm i -S lazy-load-image
 ```
+
+Add `data-lazyload` attribute to img elements to be lazy loaded. Leave src attribute as empty string or use a loading indicator.
 
 ```html
 <body>
@@ -20,6 +24,7 @@ npm i -S lazy-load-image
 </body>
 ```
 
+Import and invoke the module.
 
 ```js
 import LazyLoad from 'lazy-load-image';
