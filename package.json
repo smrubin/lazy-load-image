@@ -1,5 +1,5 @@
 {
- "name": "lazy-load-image",
+ "name": "@smrubin/lazy-load-image",
  "version": "0.1.0",
  "description": "A module to lazy load images using the Intersection Observer API",
  "main": "index.js",
